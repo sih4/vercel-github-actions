@@ -1,0 +1,8 @@
+{
+  "name": "vercel-github-actions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sih4/vercel-github-actions.git",
+  "author": "",
+  "license": "MIT"
+}
