@@ -17,6 +17,8 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID}}  #Required
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required 
           working-directory: ./
+          alias-domains: | #Optional
+            {{BRANCH}}.dev.sih4.me
       - uses: actions/github-script@v5
         with:
           script: |
