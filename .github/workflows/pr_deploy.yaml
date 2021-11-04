@@ -17,4 +17,4 @@ jobs:
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required 
           working-directory: ./
           alias-domains: | #Optional
-            pr-{{PR_NUMBER}}.dev.sih4.me
+            {{BRANCH}}.dev.sih4.me
