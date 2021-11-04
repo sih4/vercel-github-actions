@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: amondnet/vercel-action@v20
+        id: vercel_action
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
           github-token: ${{ secrets.GITHUB_TOKEN }} #Optional 
@@ -16,5 +17,12 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID}}  #Required
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required 
           working-directory: ./
-          alias-domains: | #Optional
-            {{BRANCH}}.dev.sih4.me
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '${{ steps.vercel_action.outputs.preview-url }}.\n${{ steps.vercel_action.outputs.preview-name }}'
+            })
